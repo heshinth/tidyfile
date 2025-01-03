@@ -79,7 +79,7 @@ file_category = {
 }
 
 
-def data_formatter(files: list):
+def data_formatter(files: list) -> dict:
     files = [unicodedata.normalize("NFKC", file) for file in files]
     file_types = {}
 
@@ -91,3 +91,24 @@ def data_formatter(files: list):
             file_types[ext].append(file)
 
     return file_types
+
+
+def categorize_files(files: list):
+    d_types = data_formatter(files)
+    categorized_data = {}
+
+    for extension, filenames in d_types.items():
+        category = next(
+            (
+                category
+                for category, extensions in file_category.items()
+                if extension in extensions
+            ),
+            "others",
+        )
+
+        if category not in categorized_data:
+            categorized_data[category] = []
+        categorized_data[category].extend(filenames)
+
+    return categorized_data
