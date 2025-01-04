@@ -3,7 +3,7 @@ import os
 from rich import print
 from rich.markdown import Markdown
 
-from tidyfile.modules.file_classifier import categorize_files_by_type
+from tidyfile.modules.file_classifier import file_count
 from tidyfile.modules.exporter import output_as
 from tidyfile.modules.file_organiser import move_files_to_categories
 
@@ -15,9 +15,14 @@ app = typer.Typer()
 def sort():
     files = os.listdir()
 
-    dict2 = categorize_files_by_type(files)
-    print(dict2)
-    move_files_to_categories(files)
+    count = file_count(files)
+    print(f"There are {count[0]} files which can be sorted into {count[1]} categories ")
+
+    confirmation = typer.confirm("Continue?")
+    if confirmation:
+        move_files_to_categories(files)
+    else:
+        print("[bold red]Aborted!![/bold red]")
 
 
 @app.command()

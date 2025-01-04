@@ -2,7 +2,7 @@ import os
 from typing import List, Dict
 
 file_category = {
-    "documents": [
+    "Documents": [
         ".pdf",
         ".doc",
         ".docx",
@@ -16,7 +16,7 @@ file_category = {
         ".csv",
         ".md",
     ],
-    "compressed": [
+    "Compressed": [
         ".zip",
         ".rar",
         ".7z",
@@ -27,7 +27,7 @@ file_category = {
         ".tgz",
         ".iso",
     ],
-    "images": [
+    "Images": [
         ".jpg",
         ".jpeg",
         ".png",
@@ -40,7 +40,7 @@ file_category = {
         ".raw",
         ".heic",
     ],
-    "video": [
+    "Video": [
         ".mp4",
         ".mov",
         ".avi",
@@ -52,7 +52,7 @@ file_category = {
         ".mpg",
         ".mpeg",
     ],
-    "audio": [
+    "Audio": [
         ".mp3",
         ".wav",
         ".ogg",
@@ -63,7 +63,7 @@ file_category = {
         ".aiff",
         ".opus",
     ],
-    "programs": [
+    "Programs": [
         ".exe",
         ".app",
         ".dmg",
@@ -75,7 +75,7 @@ file_category = {
         ".sh",
         ".com",
     ],
-    "code": [
+    "Code": [
         ".py",
         ".js",
         ".java",
@@ -145,9 +145,21 @@ def categorize_files_by_type(files: List[str]) -> Dict[str, List[str]]:
                 for category, extensions in file_category.items()
                 if extension in extensions
             ),
-            "others",
+            "Others",
         )
 
         categorized_data.setdefault(category, []).extend(filenames)
 
     return categorized_data
+
+
+def file_count(files: list):
+    category_count = 0
+    file_count = 0
+    categorized_data = categorize_files_by_type(files)
+    for category, file_names in categorized_data.items():
+        category_count += 1
+        for file_name in file_names:
+            file_count += 1
+
+    return file_count, category_count
