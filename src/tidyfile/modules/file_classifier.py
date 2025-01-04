@@ -1,6 +1,6 @@
 import os
 import unicodedata
-
+from typing import List, Dict
 
 file_category = {
     "documents": [
@@ -76,25 +76,66 @@ file_category = {
         ".sh",
         ".com",
     ],
+    "code": [
+        ".py",
+        ".js",
+        ".java",
+        ".cpp",
+        ".c",
+        ".cs",
+        ".php",
+        ".html",
+        ".css",
+        ".sql",
+        ".rb",
+        ".swift",
+        ".go",
+        ".rs",
+        ".ts",
+        ".jsx",
+        ".tsx",
+    ],
 }
 
 
-def data_formatter(files: list) -> dict:
+def normalize_and_group_files(files: List[str]) -> Dict[str, List[str]]:
+    """
+    Normalize file names and group files by their extension.
+
+    Parameters:
+    files (list): List of file names.
+
+    Returns:
+    dict: Dictionary with file extensions as keys and lists of file names as values.
+    """
+    if not files:
+        return {}
+
     files = [unicodedata.normalize("NFKC", file) for file in files]
     file_types = {}
 
     for file in files:
         if os.path.isfile(file):
-            name, ext = os.path.splitext(file)
-            if ext not in file_types:
-                file_types[ext] = []
-            file_types[ext].append(file)
+            _, ext = os.path.splitext(file)
+            file_types.setdefault(ext, []).append(file)
 
     return file_types
 
 
-def categorize_files(files: list):
-    d_types = data_formatter(files)
+def categorize_files_by_type(files: List[str]) -> Dict[str, List[str]]:
+    """
+    Categorize files based on their types.
+
+    Parameters:
+    files (list): List of file names.
+
+    Returns:
+    dict: Dictionary with categories as keys and lists of file names as values.
+    """
+    if not files:
+        return {}
+
+    d_types = normalize_and_group_files(files)
     categorized_data = {}
 
     for extension, filenames in d_types.items():
@@ -107,8 +148,6 @@ def categorize_files(files: list):
             "others",
         )
 
-        if category not in categorized_data:
-            categorized_data[category] = []
-        categorized_data[category].extend(filenames)
+        categorized_data.setdefault(category, []).extend(filenames)
 
     return categorized_data

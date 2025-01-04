@@ -1,8 +1,8 @@
-from tidyfile.modules.formatter import data_formatter
+from tidyfile.modules.file_classifier import normalize_and_group_files
 
 
 def output_as(files: list):
-    data = data_formatter(files)
+    data = normalize_and_group_files(files)
     markdown = dict_to_markdown(data)
     return markdown
 
