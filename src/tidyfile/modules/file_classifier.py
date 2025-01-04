@@ -1,5 +1,4 @@
 import os
-import unicodedata
 from typing import List, Dict
 
 file_category = {
@@ -111,7 +110,8 @@ def normalize_and_group_files(files: List[str]) -> Dict[str, List[str]]:
     if not files:
         return {}
 
-    files = [unicodedata.normalize("NFKC", file) for file in files]
+    files = [file.encode("utf-8").decode("utf-8") for file in files]
+
     file_types = {}
 
     for file in files:
