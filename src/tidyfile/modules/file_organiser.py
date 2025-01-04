@@ -6,6 +6,15 @@ from tidyfile.modules.file_classifier import categorize_files_by_type
 
 
 def move_files_to_categories(files: list):
+    """
+    Moves files into categorized folders based on their type.
+
+    Args:
+        files (list): A list of file paths to be categorized and moved.
+
+    The function categorizes the given files by their type and moves them into corresponding folders.
+    If the category folder does not exist, it creates the folder. Logs the actions performed and any errors encountered.
+    """
     categorised_files = categorize_files_by_type(files)
 
     for category, filenames in categorised_files.items():

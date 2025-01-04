@@ -154,6 +154,15 @@ def categorize_files_by_type(files: List[str]) -> Dict[str, List[str]]:
 
 
 def file_count(files: list):
+    """
+    Counts the total number of files and categories in the given list of files.
+
+    Args:
+        files (list): A list of file paths to be categorized and counted.
+
+    Returns:
+        tuple: A tuple containing the total number of files and the total number of categories.
+    """
     category_count = 0
     file_count = 0
     categorized_data = categorize_files_by_type(files)
