@@ -5,7 +5,7 @@ from rich.markdown import Markdown
 # from typing_extensions import Annotated
 
 from tidyfile.modules.file_classifier import file_count
-from tidyfile.modules.exporter import output_as
+from tidyfile.modules.file_exporter import output_as
 from tidyfile.modules.file_organiser import move_files_to_categories
 
 
