@@ -2,7 +2,7 @@ import typer
 import os
 from rich import print
 from rich.markdown import Markdown
-from tidyfile.modules.file_classifier import normalize_and_group_files
+from tidyfile.modules.file_classifier import categorize_files_by_type
 from tidyfile.modules.exporter import output_as
 
 
@@ -13,7 +13,7 @@ app = typer.Typer()
 def sort():
     files = os.listdir()
 
-    dict2 = normalize_and_group_files(files)
+    dict2 = categorize_files_by_type(files)
     print(dict2)
 
 
