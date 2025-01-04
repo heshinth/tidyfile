@@ -35,9 +35,9 @@ def sort():
 
 
 @app.command()
-def list():
+def preview():
     """
-    List all files in the current directory categorized.
+    Preview all files in the current directory categorized.
     """
     files = os.listdir()
     md = Markdown(output_as(files))

@@ -23,12 +23,12 @@ To sort files in the current directory into categories:
 tidyfile sort
 ```
 
-### Listing Files
+### Preview Files
 
-To list all files in the current directory categorized:
+To preview all files in the current directory categorized:
 
 ```sh
-tidyfile list
+tidyfile preview
 ```
 
 ## Development
@@ -42,9 +42,15 @@ To contribute to TidyFile, follow these steps:
 5. Push your changes to your forked repository.
 6. Create a pull request to the main repository.
 
+## Future Plans
+
+- [ ] Ability to export categorized files as Markdown, JSON and CSV formats.
+- [ ] Custom Categories: Allow users to define their own file categories and extensions.
+- [ ] Recursive Sorting: Add an option to sort files in subdirectories recursively.
+
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 license License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
