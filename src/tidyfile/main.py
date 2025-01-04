@@ -2,6 +2,7 @@ import typer
 import os
 from rich import print
 from rich.markdown import Markdown
+# from typing_extensions import Annotated
 
 from tidyfile.modules.file_classifier import file_count
 from tidyfile.modules.exporter import output_as
@@ -35,6 +36,9 @@ def sort():
 
 @app.command()
 def list():
+    """
+    List all files in the current directory categorized.
+    """
     files = os.listdir()
     md = Markdown(output_as(files))
     print(md)

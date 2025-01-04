@@ -1,9 +1,11 @@
-from tidyfile.modules.file_classifier import normalize_and_group_files
+from tidyfile.modules.file_classifier import categorize_files_by_type, file_count
 
 
 def output_as(files: list):
-    data = normalize_and_group_files(files)
+    data = categorize_files_by_type(files)
     markdown = dict_to_markdown(data)
+    count = file_count(files)
+    markdown += f"\nThere are **{count[0]}** files which can be sorted into **{count[1]}** categories."
     return markdown
 
 
@@ -35,4 +37,5 @@ def dict_to_markdown(data: dict, level: int = 0):
                 markdown += f"{indent}  - {item}\n"
         else:
             markdown += f"{indent}- **{key}**: {value}\n"
+
     return markdown
