@@ -68,7 +68,7 @@ To contribute to TidyFile, follow these steps:
 
 ## License
 
-This project is licensed under the GPL-3.0 license License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
