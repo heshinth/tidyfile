@@ -8,11 +8,19 @@ from tidyfile.modules.exporter import output_as
 from tidyfile.modules.file_organiser import move_files_to_categories
 
 
-app = typer.Typer()
+app = typer.Typer(
+    add_completion=False,
+    no_args_is_help=True,
+    help="A CLI tool to organize and manage files in the current directory.",
+)
 
 
 @app.command()
 def sort():
+    """
+    Sort files in the current directory into categories based on their type.
+    """
+
     files = os.listdir()
 
     count = file_count(files)
