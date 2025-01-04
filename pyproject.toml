@@ -3,6 +3,7 @@ name = "tidyfile"
 version = "0.1.0"
 description = "A CLI tool to sort your files into organized directories."
 readme = "README.md"
+license = {file = "LICENSE"}
 authors = [
     { name = "Heshinth", email = "heshinth@gmail.com" }
 ]
@@ -10,6 +11,22 @@ requires-python = ">=3.12"
 dependencies = [
     "typer>=0.15.1",
 ]
+keywords = [
+    "file",
+    "organizer",
+    "CLI",
+    "file management",
+    "automation",
+    "file sorter",
+    "directory",
+    "organization",
+    "productivity",
+    "utilities"
+]
+
+[project.urls]
+Repository = "https://github.com/heshinth/tidyfile.git"
+Issues = "https://github.com/heshinth/tidyfile/issues"
 
 [project.scripts]
 tidyfile = "tidyfile.main:app"
