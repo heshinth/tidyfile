@@ -1,6 +1,6 @@
 [project]
 name = "tidyfile"
-version = "0.1.0"
+version = "0.1.post1"
 description = "A CLI tool to sort your files into organized directories."
 readme = "README.md"
 license = {file = "LICENSE"}
