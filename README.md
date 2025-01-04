@@ -11,7 +11,11 @@ TidyFile is a CLI tool to organize and manage files in the current directory. It
 
 ## Installation
 
-Will be updated soon
+You can install TidyFile using pip:
+
+```sh
+pip install tidyfile
+```
 
 ## Usage
 
@@ -30,6 +34,20 @@ To preview all files in the current directory categorized:
 ```sh
 tidyfile preview
 ```
+
+## Build Instructions
+
+This project uses `uv` for management. To build the project, follow these steps:
+
+1. Install `uv` by following the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/).
+2. Clone the repository:
+   ```sh
+   git clone https://github.com/heshinth/tidyfile.git
+   ```
+3. Sync the project dependencies:
+   ```sh
+   uv sync
+   ```
 
 ## Development
 
