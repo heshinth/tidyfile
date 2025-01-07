@@ -69,7 +69,7 @@ uv sync
 
 ## Future Plans
 
-- [ ] Ability to export categorized files as Markdown, JSON and CSV formats.
+- [ ] Ability to export categorized files as JSON and CSV formats.
 - [ ] Custom Categories: Allow users to define their own file categories and extensions.
 - [ ] Recursive Sorting: Add an option to sort files in subdirectories recursively.
 

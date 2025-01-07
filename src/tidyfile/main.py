@@ -2,10 +2,10 @@ import typer
 import os
 from rich import print
 from rich.markdown import Markdown
-# from typing_extensions import Annotated
+from typing_extensions import Annotated
 
 from tidyfile.modules.file_classifier import file_count
-from tidyfile.modules.file_exporter import output_as
+from tidyfile.modules.file_exporter import output_as, create_export
 from tidyfile.modules.file_organiser import move_files_to_categories
 
 
@@ -35,13 +35,21 @@ def sort():
 
 
 @app.command()
-def preview():
+def preview(
+    export: Annotated[
+        bool, typer.Option(help="Export the preview as a markdown file")
+    ] = False,
+):
     """
     Preview all files in the current directory categorized.
     """
     files = os.listdir()
-    md = Markdown(output_as(files))
-    print(md)
+    md_view = output_as(files, "markdown")
+    preview = Markdown(md_view)
+    print(preview)
+    if export:
+        export_file = create_export(output_as(files, "markdown"), "markdown")
+        print(f"The preview is exported as [bold green]{export_file}[/bold green]")
 
 
 if __name__ == "__main__":

@@ -11,3 +11,4 @@ wheels/
 
 #Dev
 .ruff_cache
+app.log

@@ -1,12 +1,14 @@
 from tidyfile.modules.file_classifier import categorize_files_by_type, file_count
+import time
 
 
-def output_as(files: list):
+def output_as(files: list, type: str):
     data = categorize_files_by_type(files)
-    markdown = dict_to_markdown(data)
-    count = file_count(files)
-    markdown += f"\nThere are **{count[0]}** files which can be sorted into **{count[1]}** categories."
-    return markdown
+    if type == "markdown":
+        markdown = dict_to_markdown(data)
+        count = file_count(files)
+        markdown += f"\nThere are **{count[0]}** files which can be sorted into **{count[1]}** categories."
+        return markdown
 
 
 def dict_to_markdown(data: dict, level: int = 0):
@@ -39,3 +41,12 @@ def dict_to_markdown(data: dict, level: int = 0):
             markdown += f"{indent}- **{key}**: {value}\n"
 
     return markdown
+
+
+def create_export(data, type):
+    if type == "markdown":
+        s = time.strftime("%Y%m%d_%H%M%S")
+        filename = f"TidyFile_Export_{s}.md"
+        file = open(filename, "w")
+        file.write(data)
+        return filename
