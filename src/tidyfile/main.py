@@ -48,8 +48,8 @@ def preview(
     preview = Markdown(md_view)
     print(preview)
     if export:
-        export_file = create_export(output_as(files, "markdown"), "markdown")
-        print(f"The preview is exported as [bold green]{export_file}[/bold green]")
+        export_name = create_export(output_as(files, "markdown"), "markdown")
+        print(f"The preview is exported as [bold green]{export_name}[/bold green]")
 
 
 if __name__ == "__main__":
