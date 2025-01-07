@@ -1,5 +1,8 @@
 # TidyFile
 
+![PyPI version](https://img.shields.io/pypi/v/tidyfile?color=blue&label=PyPI&logo=pypi)  
+![Downloads](https://img.shields.io/pypi/dm/tidyfile?color=brightgreen&label=Downloads)
+
 **TidyFile**: Declutter your workspace with this command-line tool that automatically categorizes and sorts your files into organized directories.
 
 ## Features
