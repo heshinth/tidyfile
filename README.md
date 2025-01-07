@@ -1,13 +1,12 @@
 # TidyFile
 
-TidyFile is a CLI tool to organize and manage files in the current directory. It categorizes files based on their types and sorts them into organized directories.
+**TidyFile**: Declutter your workspace with this command-line tool that automatically categorizes and sorts your files into organized directories.
 
 ## Features
 
-- Categorizes files into predefined categories such as Documents, Images, Videos, etc.
-- Supports sorting files into directories.
+- Automatically categorizes files into predefined groups like Documents, Images, Videos, Archives, and more.
 - Provides a summary of the files and their categories.
-- Outputs categorized files in Markdown format.
+- Generates a report of categorized files in Markdown format.
 
 ## Installation
 
@@ -21,7 +20,7 @@ pip install tidyfile
 
 ### Sorting Files
 
-To sort files in the current directory into categories:
+To sort files in the current directory into categorized directories:
 
 ```sh
 tidyfile sort
@@ -29,10 +28,23 @@ tidyfile sort
 
 ### Preview Files
 
-To preview all files in the current directory categorized:
+To preview all files in the current directory categorized without moving the files:
 
 ```sh
-tidyfile preview
+ tidyfile preview
+```
+
+A simplified example of the output:
+
+```sh
+- Documents
+  - document1.pdf
+  - report.docx
+
+- Images
+  - image1.jpg
+  - photo.png
+
 ```
 
 ## Build Instructions
@@ -41,24 +53,16 @@ This project uses `uv` for management. To build the project, follow these steps:
 
 1. Install `uv` by following the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/).
 2. Clone the repository:
-   ```sh
-   git clone https://github.com/heshinth/tidyfile.git
-   ```
-3. Sync the project dependencies:
-   ```sh
-   uv sync
-   ```
 
-## Development
+```sh
+git clone https://github.com/heshinth/tidyfile.git
+```
 
-To contribute to TidyFile, follow these steps:
+3. Sync the project dependencies using uv sync:
 
-1. Fork the repository.
-2. Clone your forked repository.
-3. Create a new branch for your feature or bugfix.
-4. Make your changes and commit them.
-5. Push your changes to your forked repository.
-6. Create a pull request to the main repository.
+```sh
+uv sync
+```
 
 ## Future Plans
 
@@ -66,10 +70,10 @@ To contribute to TidyFile, follow these steps:
 - [ ] Custom Categories: Allow users to define their own file categories and extensions.
 - [ ] Recursive Sorting: Add an option to sort files in subdirectories recursively.
 
-## License
-
-This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any inquiries or issues, please open an issue on the [GitHub repository](https://github.com/heshinth/tidyfile/issues).
+
+## License
+
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
