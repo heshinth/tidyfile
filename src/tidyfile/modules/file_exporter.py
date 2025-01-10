@@ -1,4 +1,6 @@
 from tidyfile.modules.file_classifier import categorize_files_by_type, file_count
+from tidyfile.utils.logger_setup import logger
+
 import time
 
 
@@ -44,9 +46,11 @@ def dict_to_markdown(data: dict, level: int = 0):
 
 
 def create_export(data, type):
+    logger.debug(f"Export as {type}")
     if type == "markdown":
         s = time.strftime("%Y%m%d_%H%M%S")
         filename = f"TidyFile_Export_{s}.md"
         file = open(filename, "w")
         file.write(data)
+        logger.debug(f"Created Export as {filename}")
         return filename

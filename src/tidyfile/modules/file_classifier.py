@@ -1,5 +1,6 @@
 import os
 from typing import List, Dict
+from tidyfile.utils.logger_setup import logger
 
 file_category = {
     "Documents": [
@@ -107,10 +108,13 @@ def normalize_and_group_files(files: List[str]) -> Dict[str, List[str]]:
     Returns:
     dict: Dictionary with file extensions as keys and lists of file names as values.
     """
+    logger.debug(f"Normalizing and grouping files: {files}")
     if not files:
+        logger.debug("No files provided.")
         return {}
 
     files = [file.encode("utf-8").decode("utf-8") for file in files]
+    logger.debug(f"Normalized files: {files}")
 
     file_types = {}
 
@@ -118,7 +122,9 @@ def normalize_and_group_files(files: List[str]) -> Dict[str, List[str]]:
         if os.path.isfile(file):
             _, ext = os.path.splitext(file)
             file_types.setdefault(ext, []).append(file)
+            logger.debug(f"File '{file}' grouped under extension '{ext}'")
 
+    logger.debug(f"Grouped file types: {file_types}")
     return file_types
 
 
@@ -132,7 +138,9 @@ def categorize_files_by_type(files: List[str]) -> Dict[str, List[str]]:
     Returns:
     dict: Dictionary with categories as keys and lists of file names as values.
     """
+    logger.debug(f"Categorizing files by type: {files}")
     if not files:
+        logger.debug("No files provided.")
         return {}
 
     d_types = normalize_and_group_files(files)
@@ -147,9 +155,12 @@ def categorize_files_by_type(files: List[str]) -> Dict[str, List[str]]:
             ),
             "Others",
         )
-
         categorized_data.setdefault(category, []).extend(filenames)
+        logger.debug(
+            f"Files with extension '{extension}' categorized under '{category}'"
+        )
 
+    logger.debug(f"Categorized data: {categorized_data}")
     return categorized_data
 
 
@@ -163,6 +174,7 @@ def file_count(files: list):
     Returns:
         tuple: A tuple containing the total number of files and the total number of categories.
     """
+    logger.debug(f"Counting files and categories for: {files}")
     category_count = 0
     file_count = 0
     categorized_data = categorize_files_by_type(files)
@@ -171,4 +183,7 @@ def file_count(files: list):
         for file_name in file_names:
             file_count += 1
 
+    logger.debug(
+        f"Total file count: {file_count}, Total category count: {category_count}"
+    )
     return file_count, category_count
